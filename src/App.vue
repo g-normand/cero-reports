@@ -33,7 +33,7 @@
             :options="{ count: loc.obs.length }"
             :name="loc.locId + loc.obs.map((x) => x.speciesCode).join('_')"
             v-for="loc in locationFiltered"
-            :key="loc.locId"
+           :key="loc.locId"
             :lat-lng="loc.latLng"
             @click="clickMarker(loc)"
             :icon="getIcon(loc)"
@@ -46,7 +46,6 @@
             :popup-anchor="[0, -34]"
             :icon-anchor="[12.5, 34]"
             :icon-size="[25, 34]"
-            :icon-url="hotspotIconEmpty"
           />
           <l-popup :options="{ width: 600 }">
             <div class="mb-2 d-flex justify-content-between align-items-center">
@@ -55,7 +54,7 @@
                   v-bind:href="'https://ebird.org/hotspot/' + popup.locId"
                   target="_blank"
                   title="eBird hotspot"
-                  v-if="!popup.locationPrivate"
+                  v-if="popup.locId.startsWith('L')"
                   >{{ popup.locName }}</a
                 >
                 <span v-else>{{ popup.locName }}</span>
@@ -87,18 +86,13 @@
                   <b-list-group-item v-for="obs in spe.obs" :key="obs.subId" class="py-1 px-0 hover-darken">
                     <b-col class="d-flex w-100 justify-content-between">
                       <small>
-                        <a
+                        <a v-if="obs.subId"
                           v-bind:href="'https://ebird.org/checklist/' + obs.subId + '#' + spe.speciesCode"
                           target="_blank"
                         >
-                          {{ daysAgoFmt(obs.daysAgo) }}
-                          {{
-                            new Date(obs.obsDt).toLocaleTimeString(undefined, {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })
-                          }}, {{ obs.howMany }} ind. {{ obs.userDisplayName }}
+                          {{ obs.obsDt }}, {{ obs.howMany }} ind. {{ obs.userDisplayName }}
                         </a>
+                        <span v-if="!obs.subId">{{ obs.obsDt }}, {{ obs.howMany }} ind. {{ obs.userDisplayName }}</span>
                       </small>
                       <span v-if="obs.hasRichMedia | obs.hasComments">
                         <span v-if="obs.hasRichMedia">
@@ -118,339 +112,40 @@
           </l-popup>
         </l-marker>
 
-        <l-circle
-          v-if="isMylocation & (location != null)"
-          :lat-lng="[location.latitude, location.longitude]"
-          :radius="distSelected * 1000"
-          color="#4ca800"
-          :fillOpacity="0"
-        />
-        <l-circle-marker
-          v-if="isMylocation & (location != null)"
-          :lat-lng="[location.latitude, location.longitude]"
-          :radius="8"
-          color="white"
-          fillColor="#4ca800"
-          :fillOpacity="1"
-        />
       </l-map>
 
-      <b-sidebar id="sidebar-1" title="Global Rare eBird" visible shadow>
+      <b-sidebar id="sidebar-1" title="Official rare sightings of Ecuador" visible shadow>
         <b-overlay :show="showOverlay" rounded="sm">
           <div class="px-3 py-2">
+            This map shows the official rare sightings in Ecuador according to the last CERO report published in 2021.<br />
+            You can find the report here :  
             <b-form>
-              <b-form-group>
-                <b-input-group>
-                  <template #prepend>
-                    <b-dropdown class="bg-green">
-                      <template #button-content>
-                        <b-icon-globe font-scale="1" v-if="!isMylocation"></b-icon-globe>
-                        <b-icon-geo-alt font-scale="1" v-if="isMylocation"></b-icon-geo-alt>
-                      </template>
-                      <b-dropdown-item @click="isMylocation = false"
-                        ><b-icon-globe class="mr-2"></b-icon-globe> Countries</b-dropdown-item
-                      >
-                      <b-dropdown-divider></b-dropdown-divider>
-                      <b-dropdown-item @click="myLocation()"
-                        ><b-icon-geo-alt class="mr-2"></b-icon-geo-alt> My location</b-dropdown-item
-                      >
-                    </b-dropdown>
-                  </template>
-
-                  <multiselect
-                    v-model="regionSelected"
-                    :options="regionSearchFiltered"
-                    :multiple="true"
-                    :custom-label="customLabel"
-                    @search-change="asyncFind"
-                    :internal-search="false"
-                    track-by="name"
-                    placeholder="Select a region "
-                    :select-label="''"
-                    :deselect-label="''"
-                    @remove="removeRegion"
-                    @select="addRegion"
-                    style="flex: 1 1"
-                    v-if="!isMylocation"
-                  >
-                    <template slot="option" slot-scope="props">
-                      {{ props.option.name }}
-                      <small>{{ props.option.code }}</small>
-                    </template>
-                  </multiselect>
-                  <b-form-input
-                    v-model="distSelected"
-                    type="number"
-                    min="0"
-                    :max="distMax"
-                    step="1"
-                    v-if="isMylocation"
-                    :debounce="debounce_time"
-                    :state="(distSelected <= distMax) & (distSelected >= 0) ? null : false"
-                  ></b-form-input>
-                  <b-input-group-append is-text v-if="isMylocation"> km away </b-input-group-append>
-                </b-input-group>
-              </b-form-group>
-
-              <b-form-group>
-                <b-input-group append="days ago">
-                  <!--<b-input-group :append="backSelected == 0 ? 'today' : backSelected == 1 ? 'yesterday' : 'days ago'">-->
-                  <b-input-group-prepend is-text>
-                    <b-icon-calendar-date class="mx-2"></b-icon-calendar-date>
-                  </b-input-group-prepend>
-                  <b-form-input
-                    v-model="backSelected"
-                    type="number"
-                    min="0"
-                    :max="backMax"
-                    step="1"
-                    :debounce="debounce_time"
-                    :state="
-                      (parseInt(backSelected) <= parseInt(backMax)) & (parseInt(backSelected) >= 0) ? null : false
-                    "
-                    aria-describedby="input-backSelected"
-                  ></b-form-input>
-                </b-input-group>
-                <p
-                  class="text-danger mb-0"
-                  v-if="(parseInt(backSelected) > parseInt(backMax)) & (parseInt(backMax) != 30)"
-                >
-                  <small @click="reload(Math.min(backSelected, 30))" class="cursor-pointer">
-                    Update max duration to {{ Math.min(backSelected, 30) }}
-                  </small>
-                </p>
-              </b-form-group>
-
-              <b-form-group>
-                <b-input-group>
-                  <template #prepend>
-                    <b-dropdown class="bg-green">
-                      <template #button-content>
-                        <b-icon-filter font-scale="1"></b-icon-filter>
-                      </template>
-                      <b-form-group label="Search by:" v-slot="{ ariaDescribedby }" class="px-2 mb-0 small">
-                        <b-form-checkbox-group
-                          v-model="filterSearchOptionsSelected"
-                          :options="filterSearchOptions"
-                          :aria-describedby="ariaDescribedby"
-                        ></b-form-checkbox-group>
-                      </b-form-group>
-                      <b-form-group label="Sort by:" v-slot="{ ariaDescribedby }" class="px-2 mb-0 small">
-                        <b-form-radio
-                          v-model="filterSortOptionsSelected"
-                          :aria-describedby="ariaDescribedby"
-                          v-for="opt in filterSortOptions"
-                          :key="opt.name"
-                          :value="opt.value"
-                        >
-                          {{ opt.text }}
-                        </b-form-radio>
-                      </b-form-group>
-                    </b-dropdown>
-                  </template>
-                  <b-form-input
-                    v-model="filterSearch"
-                    type="search"
-                    placeholder="Search..."
-                    :debounce="debounce_time"
-                  ></b-form-input>
-                  <template #append v-if="isaba">
-                    <b-dropdown>
-                      <template #button-content>
-                        <small>ABA-{{ aba_limit }}</small>
-                      </template>
-                      <b-dropdown-text>
-                        <b-form-spinbutton v-model="aba_limit" inline size="sm" min="1" max="6"></b-form-spinbutton>
-                      </b-dropdown-text>
-                    </b-dropdown>
-                  </template>
-                </b-input-group>
-              </b-form-group>
+             <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/2856">6th report</a>
             </b-form>
-            <!--<label class="mt-2" v-if="speciesFiltered.length > 0">Sightings:</label>-->
-            <div class="accordion" role="tablist">
-              <template v-for="(spe, spe_index) in speciesFiltered">
-                <b-card no-body class="mb-1" v-if="spe_index <= spe_index_max" :key="spe.speciesCode">
-                  <b-card-header
-                    header-tag="header"
-                    role="tab"
-                    v-b-toggle="'accordion-' + spe.speciesCode"
-                    class="p-1 d-flex justify-content-between align-items-center cursor-pointer"
-                    @mouseover="mouseHoverList(spe.speciesCode)"
-                    @mouseout="mouseOutList"
-                  >
-                    <span>
-                      {{ spe.comName }}
+            <br />
 
-                      <b-badge
-                        v-if="(spe.aba >= 3) & (spe.aba <= 6)"
-                        :class="'mr-1 font-weight-normal bg-aba-' + spe.aba"
-                        >ABA-{{ spe.aba }}</b-badge
-                      >
-                    </span>
-                    <b-badge pill style="background-color: #343a40">{{ spe.count }}</b-badge>
-                  </b-card-header>
-                  <b-collapse v-bind:id="'accordion-' + spe.speciesCode" accordion="my-accordion" role="tabpanel">
-                    <!--<b-card-body>
-                <b-card-text>I start opened because <code>visible</code> is <code>true</code></b-card-text>
-              </b-card-body>-->
-                    <b-list-group>
-                      <b-list-group-item
-                        v-for="loc in spe.loc"
-                        :key="spe.speciesCode + loc.locId"
-                        class="py-2 px-2 hover-darken"
-                        @mouseover="mouseHoverList(loc.locId)"
-                        @mouseout="mouseOutList"
-                      >
-                        <div class="d-flex w-100 justify-content-between">
-                          <a
-                            v-bind:href="'https://ebird.org/hotspot/' + loc.locId"
-                            target="_blank"
-                            title="eBird hotspot"
-                            v-if="!loc.locationPrivate"
-                            >{{ loc.locName }}</a
-                          >
-                          <span v-else>{{ loc.locName }}</span>
-                          <span style="flex: none">
-                            <a
-                              v-bind:href="
-                                'https://www.google.com/maps/search/?api=1&query=' +
-                                loc.latLng.lat +
-                                ',' +
-                                loc.latLng.lng
-                              "
-                              target="_blank"
-                              title="direction on google map"
-                            >
-                              <font-awesome-icon icon="directions" />
-                            </a>
-                          </span>
-                        </div>
-                        <div v-for="obs in loc.obs" :key="obs.subId" class="d-flex w-100 justify-content-between">
-                          <a
-                            v-bind:href="'https://ebird.org/checklist/' + obs.subId + '#' + obs.speciesCode"
-                            target="_blank"
-                            title="eBird checklist"
-                            class="mr-1"
-                          >
-                            <small
-                              >{{ daysAgoFmt(obs.daysAgo) }}
-                              {{
-                                new Date(obs.obsDt).toLocaleTimeString(undefined, {
-                                  hour: "2-digit",
-                                  minute: "2-digit",
-                                })
-                              }}, {{ obs.howMany }} ind. {{ obs.userDisplayName }}</small
-                            >
-                          </a>
-                          <span v-if="obs.hasRichMedia | obs.hasComments">
-                            <span v-if="obs.hasRichMedia & !obs.media">
-                              <small>
-                                <b-icon-camera-fill class="mr-1 cursor-pointer" @click="addMedia(obs.obsId)" />
-                              </small>
-                            </span>
-                            <template v-if="obs.media">
-                              <b-img
-                                v-for="m in obs.media"
-                                :key="m"
-                                :src="'https://cdn.download.ams.birds.cornell.edu/api/v1/asset/' + m + '/320'"
-                              />
-                            </template>
-                            <span v-if="obs.hasComments">
-                              <small><b-icon-chat-square-text-fill class="cursor-pointer" /></small>
-                            </span>
-                          </span>
-                        </div>
-                      </b-list-group-item>
-                    </b-list-group>
-                  </b-collapse>
-                </b-card>
-              </template>
-            </div>
-            <div v-if="Object.keys(speciesFiltered).length > spe_index_max">
-              <b-button @click="spe_index_max = 100000" block variant="light"
-                >See {{ Object.keys(speciesFiltered).length - spe_index_max }} more species</b-button
-              >
-            </div>
+            List of the other CERO reports :
+            <b-form>
+             <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/1990">5th report</a>
+            </b-form>
+            <b-form>
+             <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/1277">4th report</a>
+            </b-form>
+            <b-form>
+             <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/446">3rd report</a>
+            </b-form>
           </div>
         </b-overlay>
         <template #footer>
           <div class="d-flex bg-dark text-light align-items-center px-3 py-2 w-100 justify-content-between">
-            <a v-b-modal.modal-instruction title="instruction/setting"> <b-icon-gear-fill></b-icon-gear-fill></a>
-            <a href="https://github.com/Zoziologie/global-rare-ebird/" target="_blank" title="github">
-              <b-icon-github style="color: white"></b-icon-github
-            ></a>
-            <b-icon-link id="link-btn" style="color: white" @click="copyLink"></b-icon-link>
-            <b-tooltip target="link-btn" triggers="click">{{ copy_status }}</b-tooltip>
-            <a href="https://documenter.getpostman.com/view/664302/S1ENwy59" target="_blank">
-              <b-img :src="ebirdLogo" style="height: 16px"></b-img
-            ></a>
-            <a href="https://zoziologie.raphaelnussbaumer.com/" target="_blank" title="zoziologie.com"
-              ><b-img :src="logo" class="zozio"></b-img
+            Inspired by 
+            <a href="https://zoziologie.raphaelnussbaumer.com/global-rare-ebird/" target="_blank" title="zoziologie.com"
+              ><b-img :src="logo_zoziologie" class="zozio"></b-img
             ></a>
           </div>
         </template>
       </b-sidebar>
     </b-row>
-    <b-modal id="modal-instruction" size="lg" ok-only title="Instruction and help">
-      Global Rare eBird uses the
-      <a href="https://documenter.getpostman.com/view/664302/S1ENwy59#397b9b8c-4ab9-4136-baae-3ffa4e5b26e4"
-        >recent notable observations (i.e., rare bird) in a region</a
-      >
-      entry point of the public API.
-      <h4>Instruction</h4>
-      <p>Query the recent (up to 30 days) rare sightings in two modes:</p>
-      <ul>
-        <li>
-          <b>My location (n: nerby):</b> up to 50km of your position (you'll need to give permission to the navigator)
-        </li>
-        <li><b>Region (r):</b> in a country or a states/provinces for US/CA.</li>
-      </ul>
-      <h4>Link and bookmark</h4>
-      <p>You can share the link of the page or create a bookmark in your navigator:</p>
-      <pre><code>https://zoziologie.raphaelnussbaumer.com/global-rare-ebird/?{{this.linkUrl}}</code></pre>
-      <p>Press <code>Command/Cmd+D</code> or <code>CTRL+D</code> to bookmark this page.</p>
-      <h4>Settings</h4>
-      <b-form-group>
-        <b-form-checkbox v-model="mapSelected"> Syncronize the observation list with the map view.</b-form-checkbox>
-      </b-form-group>
-      <p>
-        The following settings affect the query to the eBird API.
-        <a href="https://documenter.getpostman.com/view/664302/S1ENwy59#397b9b8c-4ab9-4136-baae-3ffa4e5b26e4"
-          >See the eBird API documentation for more information</a
-        >. Note that longer distance and duration can affect the performance of the website.
-      </p>
-      <b-form-group>
-        <b-form-checkbox v-model="detailSelected">
-          Fetch/display information on media and comments (slow - instable)</b-form-checkbox
-        >
-        <b-form-checkbox v-model="mediaSelected">
-          Fetch/display only observations with media (slow - instable)
-        </b-form-checkbox>
-        <b-form-checkbox v-model="hotspotSelected"> Fetch/display only observations made at a hotspot </b-form-checkbox>
-      </b-form-group>
-      <b-form inline>
-        <label>
-          <b-form-input v-model="distMax" type="number" min="0" max="50" step="1" class="mr-2"></b-form-input>
-          The search radius from your location, in kilometers (max: 50)
-        </label>
-        <label>
-          <b-form-input
-            v-model="backMax"
-            id="backMax"
-            type="number"
-            class="mr-2"
-            min="0"
-            max="30"
-            step="1"
-          ></b-form-input>
-          The number of days back to fetch observations (max: 30)
-        </label>
-      </b-form>
-      <h4>Report an issue, bug or suggestion</h4>
-      Use
-      <a href="https://github.com/Zoziologie/global-rare-ebird/issues">Github Issues</a>.
-    </b-modal>
   </b-container>
 </template>
 
@@ -481,14 +176,9 @@ import {
   LCircleMarker,
 } from "vue2-leaflet";
 import Vue2LeafletMarkerCluster from "vue2-leaflet-markercluster";
+import obs_list from "./assets/obs_list.json";
+import logo_zoziologie from "./assets/logo_zoziologie.svg";
 
-import ebirdLogo from "./assets/ebird_e_w.svg";
-import hotspotIconPerso from "./assets/hotspot-icon_perso_small.png";
-import hotspotIconHotspot from "./assets/hotspot-icon-hotspot.png";
-import hotspotIconEmpty from "./assets/hotspot-icon_empty.png";
-import logo from "./assets/logo.svg";
-
-import taxo from "./assets/taxo.json";
 
 export default {
   components: {
@@ -506,16 +196,11 @@ export default {
   },
   data() {
     return {
-      logo: logo,
-      ebirdLogo: ebirdLogo,
-      hotspotIconHotspot: hotspotIconHotspot,
-      hotspotIconPerso: hotspotIconPerso,
-      hotspotIconEmpty: hotspotIconEmpty,
-      isMylocation: true,
+      logo_zoziologie: logo_zoziologie,
       location: null,
       bounds: latLngBounds([
-        [90, 180],
-        [-90, -180],
+        [10, -80],
+        [-15, -100],
       ]),
       tileProviders: [
         {
@@ -545,134 +230,32 @@ export default {
         },
       ],
       debounce_time: 200,
-      backMax: 3,
-      distMax: 50,
-      regionSearch: [],
-      regionSearchFiltered: [],
-      regionSelected: [],
       observationsRegion: [],
-      observationsMylocation: [],
-      speciesSelected: [],
-      backSelected: 1,
-      distSelected: 50,
-      mapSelected: true,
-      mediaSelected: false,
-      hotspotSelected: false,
-      detailSelected: false,
-      filterSearch: "",
-      filterSearchOptions: [
-        { text: "Common name", value: "comName" },
-        { text: "Scientific name", value: "sciName" },
-        //{ text: "Region Code", value: "regionCode" },
-        { text: "Location name", value: "locName" },
-        //{ text: "Observer Name", value: "userDisplayName" },
-      ],
-      filterSearchOptionsSelected: ["comName", "sciName", "locName"],
-      filterSortOptions: [
-        { text: "Taxonomic order", value: "tax" },
-        { text: "Common name", value: "comName" },
-        { text: "Date", value: "daysAgo" },
-        //{ text: "Scientific name", value: "sciName" },
-      ],
-      filterSortOptionsSelected: "tax",
+      obs_list: obs_list,
       showOverlay: false,
       popup: false,
-      aba_limit: 1,
-      spe_index_max: 50,
       copy_status: "...",
     };
+  },
+  mounted() {
+    this.showOverlay = true;
+    this.observationsRegion.push(...this.processObs(this.obs_list));
+    if (this.observationsRegion.length > 0) {
+      this.$refs.map.mapObject.fitBounds(this.observationsRegion.map((m) => m.latLng));
+    }
+    this.showOverlay = false;
   },
   methods: {
     boundsUpdated(bounds) {
       this.bounds = bounds;
-    },
-    myLocation(attempt) {
-      if (this.location == "User denied Geolocation") {
-        alert("Your location is not enabled in your broweser");
-        return;
-      } else {
-        if (this.location == null) {
-          setTimeout(() => {
-            console.log("Searching for location... attempt " + attempt);
-            this.myLocation(attempt + 1);
-          }, 1000 * attempt);
-
-          /*if (this.location == null){
-        var r = confirm("Issue with location. Try again?")
-        if (r == true) {
-          setTimeout(() => { this.myLocation(); }, 1000);
-        }
-        return
-      }*/
-          return;
-        } else {
-          console.log("Location found: " + this.location);
-          this.isMylocation = true;
-          this.showOverlay = true;
-          fetch(
-            "https://api.ebird.org/v2/data/obs/geo/recent/notable?lat=" +
-              this.location.latitude +
-              "&lng=" +
-              this.location.longitude +
-              "&key=vcs68p4j67pt&detail=" +
-              (this.detailSelected ? "full" : "simple") +
-              "&back=" +
-              this.backMax +
-              "&dist=" +
-              this.distMax +
-              "&hotspot=" +
-              this.hotspotSelected
-          )
-            .then((response) => response.json())
-            .then((json) => {
-              this.observationsMylocation = [...this.processObs(json, "mylocation")];
-              if (this.observationsMylocation.length > 0) {
-                this.$refs.map.mapObject.fitBounds(this.observationsMylocation.map((m) => m.latLng));
-              }
-              this.showOverlay = false;
-              this.updateURL();
-            });
-        }
-      }
-    },
-    addRegion(selectedOption) {
-      this.showOverlay = true;
-      fetch(
-        "https://api.ebird.org/v2/data/obs/" +
-          selectedOption.code +
-          "/recent/notable?key=vcs68p4j67pt&detail=" +
-          (this.detailSelected ? "full" : "simple") +
-          "&back=" +
-          this.backMax +
-          "&hotspot=" +
-          this.hotspotSelected
-      )
-        .then((response) => response.json())
-        .then((json) => {
-          this.observationsRegion.push(...this.processObs(json, selectedOption.code));
-          if (this.observationsRegion.length > 0) {
-            this.$refs.map.mapObject.fitBounds(this.observationsRegion.map((m) => m.latLng));
-          }
-          this.showOverlay = false;
-          this.updateURL();
-        });
-    },
-    removeRegion(removedOption) {
-      this.observationsRegion = this.observationsRegion.filter((e) => e.regionCode != removedOption.code);
-      if (this.observationsRegion.length > 0) {
-        this.$refs.map.mapObject.fitBounds(this.observationsRegion.map((m) => [m.lat, m.lng]));
-      }
-      this.updateURL();
-    },
-    processObs(obs, regionCode) {
+    },  
+    processObs(obs) {
       // This filtering is due when using detail=full in api. Maybe because of adding comments/media later? Need to check, but it would be then worth filtering more
-      var id = obs.map((item) => item.speciesCode + item.subId);
-      obs = obs.filter((val, index) => id.indexOf(val.speciesCode + val.subId) === index);
-      let USCA = regionCode.includes("US") | regionCode.includes("CA");
-      this.aba_limit = (regionCode == "US") | (regionCode == "CA") ? 3 : this.aba_limit;
+      var id = obs.map((item) => item.speciesCode + item.obsDt + item.subId);
+      obs = obs.filter((val, index) => id.indexOf(val.speciesCode + val.obsDt + val.subId) === index);
       obs = obs.map((e) => {
         let o = {};
-        o.regionCode = regionCode;
+        o.regionCode = 'EC';
         o.comName = e.comName;
         o.sciName = e.sciName;
         o.speciesCode = e.speciesCode;
@@ -682,62 +265,17 @@ export default {
         o.locName = e.locName;
         o.locationPrivate = e.locationPrivate;
         o.obsDt = e.obsDt;
-        o.daysAgo = Math.round(
-          (new Date().setHours(0, 0, 0, 0) - new Date(e.obsDt).setHours(0, 0, 0, 0)) / 1000 / 60 / 60 / 24
-        );
         o.latLng = latLng(e.lat, e.lng);
 
         // Following only present with detail=full in url but we found a way around for all of them
         o.obsId = e.obsId;
         o.userDisplayName = "userDisplayName" in e ? "(" + e.userDisplayName + ")" : "";
-        //o.subnational1Code = e.subnational1Code;
-        //o.countryCode = e.countryCode;
         o.hasComments = e.hasComments;
         o.hasRichMedia = e.hasRichMedia;
-
-        if (this.location) {
-          o.distToMe = this.calcCrow(e.lat, e.lng, this.location.latitude, this.location.longitude);
-        }
-        let tmp = taxo.find((e) => e.cod === o.speciesCode);
-        if (tmp) {
-          if (USCA) {
-            o.aba = tmp.aba ? tmp.aba : 1;
-          } else {
-            o.aba = 10;
-          }
-          o.cat = tmp.cat;
-          o.tax = tmp.tax;
-        } else {
-          o.aba = 1;
-          o.cat = "unknown";
-          o.tax = 9999;
-        }
-
-        /*.map((o) => {
-          fetch(
-          "https://ebird.org/obsservice/comment?obsId=" + o.obsId
-        )
-        .then((response) => response.json())
-        .then((json) => {
-          console.log(json)
-          o.comment = json
-        });
-        return o;
-        })*/
-
+        console.log(o);
         return o;
       });
       return obs;
-    },
-    reload(newBack) {
-      this.backMax = newBack;
-      this.back = newBack;
-      if (this.isMylocation) {
-        this.myLocation(1);
-      } else {
-        this.regionSelected.forEach((x) => this.removeRegion(x));
-        this.regionSelected.forEach((x) => this.addRegion(x));
-      }
     },
     mouseHoverList(markerID) {
       this.$refs.markers.forEach(function (m) {
@@ -772,57 +310,19 @@ export default {
       // Converts numeric degrees to radians
       return (Value * Math.PI) / 180;
     },
-    async copyLink() {
-      this.copy_status = "...";
-      let str = "https://zoziologie.raphaelnussbaumer.com/global-rare-ebird/?" + this.linkUrl;
-      try {
-        await navigator.clipboard.writeText(str);
-        this.copy_status = "Copied url to clipboard!";
-      } catch ($e) {
-        this.copy_status = "Cannot copy url to clipboard!";
-      }
-    },
     clickMarker(loc) {
       loc.sp = loc.obs.reduce(function (r, i) {
         r[i.speciesCode] = r[i.speciesCode] || {
-          obs: [],
+         obs: [],
           comName: i.comName,
           speciesCode: i.speciesCode,
           aba: i.aba,
         };
-        r[i.speciesCode].obs.push(i);
+       r[i.speciesCode].obs.push(i);
         return r;
       }, {});
       this.popup = loc;
       setTimeout(() => this.$refs.marker.mapObject.openPopup(), 100);
-    },
-    customLabel({ name, code }) {
-      if (this.regionSelected.length > 1) {
-        return `${code}`;
-      } else {
-        return `${name}`;
-      }
-    },
-    asyncFind(query) {
-      this.regionSearchFiltered = this.regionSearch.filter((o) =>
-        Object.keys(o).some((k) => o[k].toLowerCase().includes(query.toLowerCase()))
-      );
-    },
-    updateURL() {
-      history.replaceState(null, null, "?" + this.linkUrl);
-    },
-    daysAgoFmt(daysAgo) {
-      return daysAgo == 0 ? "Today" : daysAgo == 1 ? "Yesterday" : daysAgo + " days ago";
-    },
-    addMedia(obsId) {
-      const index = this.observationsRegion.findIndex((x) => {
-        return x.obsId === obsId;
-      });
-      fetch("http://tripreport.raphaelnussbaumer.com/obsservice/media?obsId=" + obsId)
-        .then((response) => response.json())
-        .then((json) => {
-          this.observationsRegion[index].media = json.map((j) => j.assetId);
-        });
     },
     getIcon(loc) {
       return L.divIcon({
@@ -858,94 +358,14 @@ export default {
     },
   },
   computed: {
-    linkUrl: function () {
-      let qp = new URLSearchParams();
-      if (this.isMylocation !== "") qp.set("mode", this.isMylocation ? "n" : "r");
-      if (!this.isMylocation) {
-        if (this.regionSelected.length > 0) qp.set("r", this.regionSelected.map((x) => x.code).join("_"));
-      } else {
-        if (this.distSelected !== "") qp.set("d", this.distSelected);
-      }
-      if (this.backSelected !== "") qp.set("t", this.backSelected);
-      if (this.detailSelected) qp.set("c", this.detailSelected ? 1 : 0);
-      return qp.toString();
-      /* var l = "https://zoziologie.raphaelnussbaumer.com/global-rare-ebird/?";
-      l += "mylocation=" + (this.isMylocation ? "1" : "0") + "&";
-      if (this.regionSelected.length > 0) {
-        l += "r=" + this.regionSelected.map((x) => x.code).join(",") + "&";
-      }
-      l += "dist=" + this.distSelected + "&";
-      l += "back=" + this.backSelected + "&";
-      return l;*/
-    },
-    isaba: function () {
-      let regionCode = this.regionSelected.map((e) => e.code);
-      if (regionCode.some((x) => x.includes("US") | x.includes("CA"))) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    observationsFiltered: function () {
-      var obsfiltered = this.isMylocation ? this.observationsMylocation : this.observationsRegion;
-      obsfiltered = obsfiltered.filter((x) => x.daysAgo <= parseInt(this.backSelected));
-      if (this.isMylocation) {
-        obsfiltered = obsfiltered.filter((x) => x.distToMe <= this.distSelected);
-      }
-      obsfiltered = obsfiltered.filter((x) => x.aba >= parseInt(this.aba_limit));
-      if (this.mediaSelected) {
-        obsfiltered = obsfiltered.filter((x) => x.hasRichMedia);
-      }
-      if (this.hotspotSelected) {
-        obsfiltered = obsfiltered.filter((x) => !x.locationPrivate);
-      }
-      if (this.mapSelected) {
-        obsfiltered = obsfiltered.filter((x) => this.bounds.pad(-0.05).contains(x.latLng));
-      }
-      obsfiltered = obsfiltered.filter((o) =>
-        this.filterSearchOptionsSelected.some((k) => o[k].toLowerCase().includes(this.filterSearch.toLowerCase()))
-      );
-      return obsfiltered
-        .sort((a, b) => (a.daysAgo < b.daysAgo ? 1 : -1))
-        .sort((a, b) => (a[this.filterSortOptionsSelected] > b[this.filterSortOptionsSelected] ? 1 : -1));
-    },
-    speciesFiltered: function () {
-      let y = this.observationsFiltered.reduce(function (r, i) {
-        r[i.speciesCode] = r[i.speciesCode] || {
-          obs: [],
-          count: 0,
-          comName: i.comName,
-          speciesCode: i.speciesCode,
-          aba: i.aba,
-        };
-        r[i.speciesCode].obs.push(i);
-        r[i.speciesCode].count = r[i.speciesCode].count + 1;
-        return r;
-      }, {});
-      return Object.values(y).map((x) => {
-        x.loc = x.obs.reduce(function (r, i) {
-          r[i.locId] = r[i.locId] || {
-            obs: [],
-            locName: i.locName,
-            locationPrivate: i.locationPrivate,
-            regionCode: i.regionCode,
-            latLng: i.latLng,
-            locId: i.locId,
-          };
-          r[i.locId].obs.push(i);
-          return r;
-        }, {});
-        return x;
-      });
-    },
     locationFiltered: function () {
-      return this.observationsFiltered.reduce(function (r, i) {
+      return this.observationsRegion.reduce(function (r, i) {
         r[i.locId] = r[i.locId] || {
           obs: [],
           count: 0,
           locName: i.locName,
           locationPrivate: i.locationPrivate,
-          regionCode: i.regionCode,
+         regionCode: i.regionCode,
           latLng: i.latLng,
           locId: i.locId,
         };
@@ -954,79 +374,6 @@ export default {
         return r;
       }, {});
     },
-  },
-  mounted() {
-    let qp = new URLSearchParams(window.location.search);
-    if (qp.get("t")) {
-      this.backSelected = Math.min(qp.get("t"), 30);
-      if (this.backSelected > this.backMax) {
-        this.backMax = this.backSelected;
-      }
-    }
-    if (qp.get("d")) {
-      this.distSelected = Math.min(qp.get("d"), 50);
-      if (this.distSelected > this.distMax) {
-        this.distMax = this.distSelected;
-      }
-    }
-    if (qp.get("c")) {
-      this.detailSelected = qp.get("c") == 1 ? true : false;
-    }
-    fetch("https://api.ebird.org/v2/ref/region/list/country/world?key=vcs68p4j67pt")
-      .then((response) => response.json())
-      .then((json) => {
-        this.regionSearch = [...this.regionSearch, ...json];
-        fetch("https://api.ebird.org/v2/ref/region/list/subnational1/US?key=vcs68p4j67pt")
-          .then((response) => response.json())
-          .then((json) => {
-            this.regionSearch = [...this.regionSearch, ...json];
-            fetch("https://api.ebird.org/v2/ref/region/list/subnational1/CA?key=vcs68p4j67pt")
-              .then((response) => response.json())
-              .then((json) => {
-                this.regionSearch = [...this.regionSearch, ...json].sort((a, b) => (a.name > b.name ? 1 : -1));
-                if (qp.get("mode") == "n") {
-                  this.myLocation(1);
-                } else {
-                  this.isMylocation = false;
-                  if (qp.get("r")) {
-                    var temp = this.regionSearch.filter((x) => qp.get("r").split("_").indexOf(x.code) > -1);
-                    temp.forEach((x) => {
-                      this.regionSelected.push(x);
-                      this.addRegion(x);
-                    });
-                  }
-                }
-                this.regionSearchFiltered = this.regionSearch;
-              });
-          });
-      });
-  },
-  created() {
-    //do we support geolocation
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          this.location = pos.coords;
-        },
-        (err) => {
-          this.location = err.message;
-        }
-      );
-    }
-  },
-  watch: {
-    isMylocation() {
-      this.updateURL();
-    },
-    backSelected() {
-      this.updateURL();
-    },
-    distSelected() {
-      this.updateURL();
-    },
-    detailSelected() {
-      this.updateURL();
-    },
-  },
+  }
 };
 </script>
