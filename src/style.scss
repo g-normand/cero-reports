@@ -62,6 +62,9 @@ body {
 .zozio:hover {
   filter: invert(46%) sepia(92%) saturate(491%) hue-rotate(49deg) brightness(97%) contrast(102%);
 }
+.b-sidebar-footer a{
+	color:white;
+}
 
 .mh-240 {
   max-height: 240px;
@@ -91,4 +94,8 @@ body {
 }
 .marker-outer {
   fill: #fff;
+}
+
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
 }

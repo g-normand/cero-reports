@@ -33,7 +33,7 @@
             :options="{ count: loc.obs.length }"
             :name="loc.locId + loc.obs.map((x) => x.speciesCode).join('_')"
             v-for="loc in locationFiltered"
-           :key="loc.locId"
+            :key="loc.locId"
             :lat-lng="loc.latLng"
             @click="clickMarker(loc)"
             :icon="getIcon(loc)"
@@ -118,7 +118,7 @@
         <b-overlay :show="showOverlay" rounded="sm">
           <div class="px-3 py-2">
             This map shows the official rare sightings in Ecuador according to the last CERO report published in 2021.<br />
-            You can find the report here :  
+            You can find the report here :
             <b-form>
              <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/2856">6th report</a>
             </b-form>
@@ -137,6 +137,12 @@
           </div>
         </b-overlay>
         <template #footer>
+          <div class="d-flex bg-dark text-light align-items-center px-3 py-2 w-100 justify-content-between">
+            Made with <b-icon icon="heart" /> by
+            <a href="https://guiguide.alwaysdata.net/" target="_blank" title="guiguide.alwaysdata.net"
+              ><b-img :src="logo_guiguide" class="zozio"></b-img>
+            Guillaume Normand</a>
+          </div>
           <div class="d-flex bg-dark text-light align-items-center px-3 py-2 w-100 justify-content-between">
             Inspired by 
             <a href="https://zoziologie.raphaelnussbaumer.com/global-rare-ebird/" target="_blank" title="zoziologie.com"
@@ -157,6 +163,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import "leaflet/dist/images/marker-shadow.png";
+import "leaflet/dist/images/marker-icon.png";
 
 import "vue-multiselect/dist/vue-multiselect.min.css";
 
@@ -178,6 +185,7 @@ import {
 import Vue2LeafletMarkerCluster from "vue2-leaflet-markercluster";
 import obs_list from "./assets/obs_list.json";
 import logo_zoziologie from "./assets/logo_zoziologie.svg";
+import logo_guiguide from "./assets/logo_guiguide.png";
 
 
 export default {
@@ -197,6 +205,7 @@ export default {
   data() {
     return {
       logo_zoziologie: logo_zoziologie,
+      logo_guiguide: logo_guiguide,
       location: null,
       bounds: latLngBounds([
         [10, -80],
@@ -248,7 +257,7 @@ export default {
   methods: {
     boundsUpdated(bounds) {
       this.bounds = bounds;
-    },  
+    },
     processObs(obs) {
       // This filtering is due when using detail=full in api. Maybe because of adding comments/media later? Need to check, but it would be then worth filtering more
       var id = obs.map((item) => item.speciesCode + item.obsDt + item.subId);
@@ -272,7 +281,6 @@ export default {
         o.userDisplayName = "userDisplayName" in e ? "(" + e.userDisplayName + ")" : "";
         o.hasComments = e.hasComments;
         o.hasRichMedia = e.hasRichMedia;
-        console.log(o);
         return o;
       });
       return obs;
@@ -318,7 +326,7 @@ export default {
           speciesCode: i.speciesCode,
           aba: i.aba,
         };
-       r[i.speciesCode].obs.push(i);
+        r[i.speciesCode].obs.push(i);
         return r;
       }, {});
       this.popup = loc;
@@ -365,7 +373,7 @@ export default {
           count: 0,
           locName: i.locName,
           locationPrivate: i.locationPrivate,
-         regionCode: i.regionCode,
+          regionCode: i.regionCode,
           latLng: i.latLng,
           locId: i.locId,
         };
