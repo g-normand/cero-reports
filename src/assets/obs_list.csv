@@ -48,12 +48,97 @@ swahaw,Swainson’s Hawk,L5838027,"La Lagartera, Churute","Feb 11, 2020",3,-2.48
 orbfru1,Orange-breasted Fruiteater,L2254860,Corona de Oro,"May 19, 2019",1,-2.636076,-79.44937,S56517651,"P. Molina, A. Carrasco, B. Tinoco, and D. Pacheco-Osorio",750,6
 grykin,Gray Kingbird,L6467765,Reserva Maquipucuna,"Oct 1, 2021",1,0.118726,-78.63516,S114227384,"M. Flores, J. Shyvers and J. Farley",1360,6
 whrswa1,White-rumped Swallow,carme,El Carmelo,"Mar 9, 2019",1,0.655788,-77.57079,S73458269,"E. Ocaña, Y. Luna and A. Boas",2750,6
-cliswa,Cliff Swallow,L471931, Isla Santa Fe,"Mar 24, 2015",1,-0.81691,-90.04068,S51542971, G. Carpentier and K. Adams,0,6
-swathr,Swainson’s Thrush,mina_roja, Mina Roja,"Oct 29, 2020",1,-0.63657,-90.35872,S75787498, D. Anchundia,630,6
-batoro1,Band-tailed Cacique,L16834822, Kapatinentza,"Oct 30, 2021",1,-2.68008,-77.486306,S97373221,"  D. Brinkhuizen, J. Nilsson and D.Utitiaj",225,6
-grtgra,Great-tailed Grackle,L471637, Puerto Ayora,"Apr 8, 2010",1,-0.74233,-90.31457,S33221868, L. Die,0,6
-norwat,Northern Waterthrush,chato, El Chato,"May 16, 2006",1,0.64025,-90.3726,S64962269, M. Hyett,610,6
-prowar,Prothonotary Warbler,L5415587, Parque Lineal Kennedy Norte,"Dec 30, 2019",1,-2.163077,-79.9015,S64431887, C. Ponce,5,6
+cliswa,Cliff Swallow,L471931,Isla Santa Fe,"Mar 24, 2015",1,-0.81691,-90.04068,S51542971, G. Carpentier and K. Adams,0,6
+swathr,Swainson’s Thrush,mina_roja,Mina Roja,"Oct 29, 2020",1,-0.63657,-90.35872,S75787498, D. Anchundia,630,6
+batoro1,Band-tailed Cacique,L16834822,Kapatinentza,"Oct 30, 2021",1,-2.68008,-77.486306,S97373221,"  D. Brinkhuizen, J. Nilsson and D.Utitiaj",225,6
+grtgra,Great-tailed Grackle,L471637,Puerto Ayora,"Apr 8, 2010",1,-0.74233,-90.31457,S33221868, L. Die,0,6
+norwat,Northern Waterthrush,chato,El Chato,"May 16, 2006",1,0.64025,-90.3726,S64962269, M. Hyett,610,6
+prowar,Prothonotary Warbler,L5415587,Parque Lineal Kennedy Norte,"Dec 30, 2019",1,-2.163077,-79.9015,S64431887, C. Ponce,5,6
 mouwar,Mourning Warbler,L6118390,Parroquia Veracruz,"Mar 1, 2020",2,-1.50588,-77.9413,S66714823, A. Argüello,960,6
-varsee3,Variable Seedeater,L6035325," La Florida Ruins, Palanda","Jan 28, 2020",1,-4.635738,-79.13077,S63923624, M. Sánchez-Nivicela,1055,6
-reccar4,Red-capped Cardinal,L13565352, Valladolid,"Aug 15, 2020",1,-4.55046,-79.13202,S81267064, P. Angulo,1670,6
+varsee3,Variable Seedeater,L6035325,"La Florida Ruins, Palanda","Jan 28, 2020",1,-4.635738,-79.13077,S63923624, M. Sánchez-Nivicela,1055,6
+reccar4,Red-capped Cardinal,L13565352,Valladolid,"Aug 15, 2020",1,-4.55046,-79.13202,S81267064, P. Angulo,1670,6
+comduc3,Comb Duck,L1905803,"Shaime, Zamora Chinchipe",12/01/11,,-4.316667,-78.65,,D. Brinkhuizen,c. 980,1
+norpin,Northern Pintail,L633169,"San Pablo Lake, Imbabura", 28 June 2012 ,1,0.216667,-78.2,S51446485,"K. Terán Portelles,  P. Echeverría*",2660,1
+whcpin,White-cheeked Pintail,L2761969,"Cumbayá, Pichincha",1 November 2009 ,,-0.193,-78.4268333,,D. Brinkhuizen,2460,1
+cintea,Cinnamon Teal,L678940,"Santa Rosa, El Oro", 1 June 2003 ,1,-3.45,-79.966667,S25119097,R. Ahlman,10,1
+norsho,Northern Shoveler,L2761796,"Las Peñas, Esmeraldas", 6 November 2012 ,1,1.1,-79.15,S22837003,C. Vogt,0,1
+norsho,Northern Shoveler,L2761796,"Las Peñas, Esmeraldas", 16 December 2012 ,,1.1,-79.15,,J. Nilsson,0,1
+soupoc1,Southern Pochard,L2034603,"La Segua, Manabí", 3 March 2007 ,4,-0.7,-80.183333,S20165598,J. Freile* and P. Moscoso,10,1
+rinduc,Ring-necked Duck,L2034603,"La Segua, Manabí", 27 January 2013 ,1,-0.7,-80.183333,S127553191,"T. Seimola*, R. Ahlman, M. A. Corrales, D. Brinkhuizen, J. Nilsson, J. Freile",10,1
+rinduc,Ring-necked Duck,L635406,"Micacocha, Napo", 25 February 2013 ,1,-0.533333,-78.183333,S127553343,"D. Brinkhuizen*, Ø. Hagen, T. Hagen",3900,1
+lessca,Lesser Scaup,L633169,"San Pablo Lake, Imbabura", 21 January 2011 ,,0.216667,-78.2,,"K. Terán Portelles, Z. López Ayala, and P. Echeverría",2660,1
+lessca,Lesser Scaup,L633169,"San Pablo Lake, Imbabura", 3 March 2012 ,,0.216667,-78.2,,J. Freile,2660,1
+lessca,Lesser Scaup,L2034603,"La Segua, Manabí", 27 December 2012 ,31,-0.7,-80.183333,S20164557,"R. Ahlman*, M. A. Corrales, D. Brinkhuizen, J. Nilsson, J. Freile",10,1
+gregre1,Great Grebe,L787523,"Ecuasal Mar Bravo, Santa Elena", 11 August 2009 ,,-2.216667,-80.966667,,A. Solano-Ugalde,0,1
+gregre1,Great Grebe,L787523,"Ecuasal Mar Bravo, Santa Elena", 4 January 2012 ,1,-2.216667,-80.966667,S18725439,B. Haase and R. Ahlman*,0,1
+gregre1,Great Grebe,L787523,"Ecuasal Mar Bravo, Santa Elena", 18 March 2010 ,1,-2.216667,-80.966667,S20168572,R. Ahlman* and B. Haase,0,1
+wispet,Wilson’s Storm-Petrel,off_puerto,"Off Puerto López, Manabí", 25 June 2011,1,-1.266667,-81.1,S20168242,R. Ahlman,0,1
+rispet1,Ringed Storm-Petrel,puerto_plata,"Puerto López-La Plata Island, Manabí", 9 February 2008 ,,-1.416667,-80.95,,J. Freile,0,1
+rispet1,Ringed Storm-Petrel,L1764936,"La Chocolatera, Santa Elena", 27 August 2011,1,-2.183333,-81,S18732255,R. Ahlman,0,1
+brnboo,Brown Booby,L1764936,"La Chocolatera, Santa Elena", 17 March 2013 ,1,-2.183333,-81,S18510591,R. Ahlman* and L. Högström,0,1
+brnboo,Brown Booby,genovesa,"Genovesa Island, Galápagos", 15 February 2013 ,,0.3,-89.933333,,D. Brinkhuizen,0,1
+ruther1,Rufescent Tiger-Heron,yalare,"Yalare, Esmeraldas", 2 October 2012 ,,1.1,-78.866667,,D. Brinkhuizen,c. 100,1
+grbher3,Great Blue Heron,L2761796,"Las Peñas, Esmeraldas", 16 December 2012 ,,1.1,-79.15,,J. Nilsson,0,1
+redegr,Reddish Egret,napo_sacha,"Napo River, near Sacha Lodge", 6 July 2009 ,1,-0.416667,-76.533333,S13189234,D. F. Lane,c. 240,1
+scaibi,Scarlet Ibis,tarapoa_road,"Lago Agrio-Tarapoa road, Sucumbíos", 19 March 2013 ,1,-0.033333,-76.566667,S18506660,"J. Morin*, R. Ahlman, B. Herrera, J. Nilsson, J. Olson, B. Olson",260,1
+gloibi,Glossy Ibis,orconcitos,"Los Orconcitos, Manabí", 30 May 2011 ,,-0.633333,-80.3,,L. Navarrete* and F. Navarrete,30,1
+bafibi1,Bare-faced Ibis,lago_agrio,"Lago Agrio, Sucumbíos", 9 May 2011,2,0,-77.766667,S18751262,R. Ahlman,300,1
+bafibi1,Bare-faced Ibis,tarapoa_road,"Lago Agrio-Tarapoa road, Sucumbíos", 19 March 2013 ,4,-0.033333,-76.566667,S18506660,"J. Morin*, R. Ahlman, B. Herrera, J. Nilsson, J. Olson, B. Olson",260,1
+sunbit1,Sunbittern,L577535,"Cascada de San Rafael, Napo", 20 April 2008,,-0.166667,-77.566667,,R. Ahlman,c. 1200,1
+pagplo,Pacific Golden-Plover,L3202705,"Puerto Villamil, Galápagos", 16 February 2008,1,-0.95351,-90.972059,S23779712,R. Ahlman,0,1
+wilsni1,Wilson’s Snipe,L5220463,"San Pablo Lake, Imbabura", 23 February 2013,2,0.216667,-78.2,S139692302,"D. Brinkhuizen*, R. Ahlman, M. Lysinger",2660,1
+lobdow,Long-billed Dowitcher,L5220463,"San Pablo Lake, Imbabura", 3 March 2012,x,0.216667,-78.2,S65090934,"J. Freile*, J. Nilsson, R. Ahlman, D. Brinkhuizen, L. Córdova, C. Vogt",2660,1
+margod,Marbled Godwit,L1885739,"Bahía de Caráquez, Manabí", 25 February 2007 ,20,-0.583333,-80.416667,S24007010,R. Ahlman,0,1
+dunlin,Dunlin,L1764936,"La Chocolatera, Santa Elena", 26 August 2011 ,1,-2.183333,-81,S18732485,R. Ahlman,0,1
+grhgul,Gray-hooded Gull,santa_cruz,"Santa Cruz, Galápagos", 15 May 2013 ,1,-0.483333,-90.266667,S14373112,N. Fox,0,1
+labter1,Large-billed Tern,L2034603,"La Segua, Manabí", 5 March 2009 ,1,-0.7,-80.183333,S23087532,R. Ahlman,10,1
+labter1,Large-billed Tern,L2034603,"La Segua, Manabí", 26 December 2012 ,1,-0.7,-80.183333,S20172360,R. Ahlman,10,1
+caster1,Caspian Tern,L2034603,"La Segua, Manabí", 27 December 2012 ,2,-0.7,-80.183333,S20164557,R. Ahlman,10,1
+blkter,Black Tern,river_sacha,"River island by Sacha Lodge, Sucumbíos", 3 July 2009 ,,-0.483333,-76.4,,"D. Lane, O. Tapuy, G. Nixon, R. Jeffers, C. Jeffers, G. Nixon, V. Nixon, T. Weir",240,1
+dwacuc1,Dwarf Cuckoo,L2761796,"Las Peñas, Esmeraldas",  17 December 2012 ,1,1.1,-79.15,S31698402,J. Nilsson,0,1
+pebcuc1,Pearly-breasted Cuckoo,yalare,"Yalare, Esmeraldas",  28 March 2008 ,1,1.1,-78.866667,S139694444,"D. Brinkhuizen, L. Brinkhuizen, A. Keavenny*, S. Jane",c. 100,1
+pebcuc1,Pearly-breasted Cuckoo,L2262710,"Majagual, Esmeraldas",  4 June 2013 ,1,1.15,-79.083333,S18499318,R. Ahlman,10,1
+pitbri1,Pink-throated Brilliant,L2763260,"Río Bigal, Orellana",  28 April 2012 ,,-0.633333,-77.316667,,"X. Amigo*, J. Freile, T. Garcia, D. Brinkhuizen, M. Hirvois, C. Urgilés, F. Gallo, K. Demoliere",c. 900,1
+spthum2,Spot-throated Hummingbird,chito,"Chito, Zamora Chinchipe",  20 September 2007 ,,-4.933333,-79.05,,K. A. Boyla* and J. Freile,c. 950,1
+spthum2,Spot-throated Hummingbird,pucapamba,"Pucapamba, Zamora Chinchipe",  3 July 2010 ,,-4.933333,-79.1,,R. Ahlman,1140,1
+humsap2,Humboldt’s Sapphire,tigre,Cascada del Tigre,  16 September 2010 ,,1.316667,-78.8,,A. Solano-Ugalde,0,1
+humsap2,Humboldt’s Sapphire,mompiche,"Mompiche, Esmeraldas",  17 February 2011 ,,0.466667,-80,,A. Solano-Ugalde,0,1
+humsap2,Humboldt’s Sapphire,L2761796,"Las Peñas, Esmeraldas",  23 November 2011 ,,1.1,-79.15,,A. Solano-Ugalde,0,1
+blfjac1,Bluish-fronted Jacamar,L1759678,"Paquisha, Zamora Chinchipe",  3 January 2013 ,2,-3.866667,-78.683333,S142194469,"D. Brinkhuizen*, G. Lambeth, D. Lambeth, N. Albán",c. 900,1
+aswant1,Ash-winged Antwren,L2349213,"Lumbaquí, Sucumbíos",  7 May 2011 ,1,0.016667,-77.316667,S18755045,"R. Ahlman*, D. Brinkhuizen",c. 850,1
+bbfgle1,Buff-browed Foliage-gleaner,above_valla,"above Valladolid, Zamora Chinchipe",  6 January 2013 ,,-4.516667,-79.116667,,D. Brinkhuizen and M. Lysinger*,c. 2000,1
+sosfly1,Southern Scrub Flycatcher,L468857,"Sumaco road, Napo",  14 June 2012 ,1,-0.716667,-77.55,S10981760,"J. Nilsson*, N. Athanas, and S. Olmstead",1100,1
+wbptyr1,White-bellied Pygmy-tyrant,L1906616,"Shaime, Zamora Chinchipe",  14 December 2010 ,,-4.316667,-78.65,S49548895,"D. Brinkhuizen*, J. Lyons, and N. Albán",c. 980,1
+olsfly,Olive-sided Flycatcher,L2761741,"Antisana, Napo",  1 October 2009 ,,-0.5,-78.216667,,D. Brinkhuizen,4050,1
+piwtyr1,Pied Water-Tyrant,L1132352,"Garzacocha, Orellana",  18 January 2007 ,,-0.466667,-75.333333,,V. Ortiz,200,1
+tumtyr2,Tumbes Chat-Tyrant,L2243441,"Zapotillo, Loja",  5 December 2010 ,1,-4.383333,-80.25,S14479852,"D. Brinkhuizen, N. Athanas*",c.250,1
+cattyr,Cattle Tyrant,L580200,"Lago Agrio, Sucumbíos",  8 May 2011 ,1,0.0923109,-76.8673092,S18752485,R. Ahlman,300,1
+thsfly2,Three-striped Flycatcher,L2487418,"Cuyabeno River, Sucumbíos",  5 May 2013 ,3,0.066667,-76.2,S18502666,R. Ahlman,200,1
+swafly1,Swainson’s Flycatcher,L618326,"Botanical Garden, Quito, Pichincha",  1 December 2011 ,1,-0.183333,-78.483333,S20163110,R. Ahlman,2780,1
+panfly1,Panama Flycatcher,tola_laguna,"Laguna de la Ciudad, Esmeraldas",  23 November 2011 ,,1.1,-79.116667,,A. Solano-Ugalde,10,1
+panfly1,Panama Flycatcher,san_andres_mang,Islas San Andrés del Manglar,  16 December 2012 ,,1.316667,-78.866667,,J. Nilsson,0,1
+panfly1,Panama Flycatcher,L2761796,"La Tola, Esmeraldas",  4 June 2013 ,2,1.2,-79.05,S18499258,R. Ahlman,0,1
+grcfly,Great Crested Flycatcher,L618326,"Botanical Garden, Quito, Pichincha",  27 November 2008 ,1,-0.183333,-78.483333,S4314287,R. Ahlman,2780,1
+grcfly,Great Crested Flycatcher,L618326,"Botanical Garden, Quito, Pichincha",  17 October 2011 ,1,-0.183333,-78.483333,S20164587,R. Ahlman,2780,1
+grcfly,Great Crested Flycatcher,L1396974,"Silanche Bird Sanctuary, Pichincha",  7 March 2013 ,,0.233333,-79.366667,,A. Solano-Ugalde,c. 450,1
+rerfru1,Red-ruffed Fruitcrow,L7790567,"Chilmá Bajo, Carchi",  7 September 2010,,0.866667,-78.066667,,,2050,1
+rerfru1,Red-ruffed Fruitcrow,L7790567,"Chilmá Bajo, Carchi",  5 January 2013 ,,0.866667,-78.066667,,"J. M. Loaiza, J. T. Domínguez, H. Pozo, W. Arteaga, A. Báez, F. Cifuentes, A. Chandi, D. Chulde, S. Guerra, T. Guerrero, M. F. Marín, P. Molina, V. Obando, E. Pazmiño, K. Terán, L. Vásquez, E. Villamarín, W. Villamarín",2050,1
+yetvir,Yellow-throated Vireo,tundaloma,"Tundaloma, Esmeraldas",  24 November 2011 ,,-1.166667,-78.75,,A. Solano-Ugalde,c. 35,1
+yetvir,Yellow-throated Vireo,los_cedros,,14 March 2012,x,0.3,-78.766667,S29805263,"J. De Coux, J. Poon*, J. Freile, and J. Garcia-Dominguez",1350,
+phivir,Philadelphia Vireo,L618326,"Botanical Garden, Quito, Pichincha",  17 April 2013 ,1,-0.183333,-78.483333,S18502051,R. Ahlman* and J. Nilsson,2780,1
+purmar,Purple Martin,L5220463,"San Pablo Lake, Imbabura",  10 September-10 October 2009 ,21,0.216667,-78.2,S20169348,R. Ahlman,2660,1
+purmar,Purple Martin,L2761969,"Cumbayá, Pichincha",  16 October 2009 ,11,-0.193,-78.4268333,S143111099,J. Freile and D. Brinkhuizen*,2460,1
+soumar,Southern Martin,canagueno,"Canangüeno, Sucumbíos",  2 July 2008 ,,0,-76.15,,J. Freile* and P. Moscoso,230,1
+soumar,Southern Martin,panacocha,"Pañacocha, Sucumbíos",  16 August 2012 ,,-0.383333,-76.116667,,"D. Brinkhuizen, B. de Bruin, and D. Gualinga",250,1
+gycthr,Grey-cheeked Thrush,L618326,"Botanical Garden, Quito, Pichincha",  17 November 2010 ,1,-0.183333,-78.483333,S143131342,D. Brinkhuizen,2780,1
+retpip,Red-throated Pipit,Rio_Verde,"Río Verde, Esmeraldas",  28 March 2008 ,1,1.066667,-79.4,S143195019,"D. Brinkhuizen, L. Brinkhuizen, A. Keaveney, S. Jane",0,1
+linsee1,Lined Seedeater,L685430,"Yasuní Scientific Station, Orellana",  5 February 1997 ,,-0.666667,-76.383333,,J. Freile,220,1
+recfin1,Red-crested Finch,macas,"Macas, Morona Santiago",  17 March 2013 ,,-2.3,-78.1,,G. Real,980,1
+wnbfin1,White-naped Brushfinch,L2913360,"La Bonita-La Sofía, Sucumbíos",  4 May 2011 ,1,0.32,-77.566667,S18755259,"J. Nilsson*, R. Ahlman, and M. Lysinger",2440,1
+wnbfin1,White-naped Brushfinch,baeza,"Baeza, Napo",  25 June 2013 ,,-0.45,-78.583333,,M. Quipo,1900,1
+cartan2,Carmiol's Tanager,kiim,"El Kiim, Zamora Chinchipe",  25 February 2012 ,,-3.783333,-78.916667,,C. A. Rodríguez-Saltos* and P. Romero,1000,1
+blugrb1,Blue Grosbeak,hoja_blanca,"Hoja Blanca, Esmeraldas",  1 August 2009 ,1,0.516667,-79.266667,S143176882,D. Brinkhuizen,c. 300,1
+gowwar,Golden-winged Warbler,L471438,"Yanayacu, Napo",  5 March 2012 ,,-1.583333,-77.916667,,J. Freile,c. 2000,1
+prowar,Prothonotary Warbler,quito,"Quito, Pichincha",  22 November 2008 ,1,-0.2226335,-78.516959,S4918572,D. Brinkhuizen,c. 2800,1
+prowar,Prothonotary Warbler,L618326,"Botanical Garden, Quito, Pichincha",  31 March 2009 ,1,-0.183333,-78.483333,S20170506,R. Ahlman,2780,1
+yebori1,Yellow-backed Oriole,changuaral,"Changuaral, Esmeraldas",  11 January 2011 ,,1.366667,-78.866667,,"L. Navarrete*, A. Forster, and S. Owens",0,1

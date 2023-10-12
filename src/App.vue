@@ -134,6 +134,12 @@
             <b-form>
              <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/446">3rd report</a>
             </b-form>
+            <b-form>
+             <a href="https://ceroecuador.files.wordpress.com/2016/02/2014_nilsson_et-al_segundo-reporte-cero1.pdf">2nd report</a>
+            </b-form>
+            <b-form>
+             <a href="https://ceroecuador.files.wordpress.com/2016/02/2013_freile-et-al_cero_reporte-anual-2013.pdf">1st report</a>
+            </b-form>
           </div>
         </b-overlay>
         <template #footer>

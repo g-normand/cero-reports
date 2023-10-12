@@ -11,7 +11,6 @@ const sp_region = sp.map(s => {
         locId: s.locId,
         locName: s.locName,
         howMany: s.howMany,
-        locName: s.locName,
         obsDt: s.obsDt,
         lat: s.lat,
         lng: s.lng,
