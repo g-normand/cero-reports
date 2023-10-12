@@ -15,6 +15,8 @@ const sp_region = sp.map(s => {
         obsDt: s.obsDt,
         lat: s.lat,
         lng: s.lng,
+        cero_report: s.cero_report,
+        altitude: s.altitude,
         subId: s.subId,
         userDisplayName: s.userDisplayName,
     }

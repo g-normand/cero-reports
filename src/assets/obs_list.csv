@@ -1,59 +1,59 @@
-speciesCode,comName,locId,locName,obsDt,howMany,lat,lng,subId,userDisplayName,comment
-bbwduc,Black-bellied Whistling-Duck,L6073730,Laguna El Salado,"Jul 13, 2019",1,0.582416,-77.789646,,W. Chulde,
-musduc,Muscovy Duck,L6073730,Laguna El Salado,"Aug 5, 2020",1,0.582416,-77.789646,S72514766,J. M. Loaiza and P. Molina,
-comduc3,Comb Duck,L2120653,Ecuasal Pacoa,"Sep 14, 2021",109,-2.09651,-80.73544,,A. Ágreda,
-comduc3,Comb Duck,isla_santa_cruz,Isla Santa Cruz highlands,"Oct 30, 2019",1,-0.666,-90.325,S61240822,D. Valencia,
-norsho,Northern Shoveler,L3064040,Playa El Garrapatero,"Feb 28, 2021",1,-0.69465,-90.22079,S82610495,D. Degel Andrade,
-cintea,Cinnamon Teal,L2120653,Ecuasal Pacoa,"Sep 6, 2021",7,-2.09651,-80.73544,S94652546,A. Ágreda,
-yebpin1,Yellow-billed Pintail,L2034603,La Segua,"Dec 30, 2016",1,-0.70318,-80.2014,S33288703,R. Ahlman,
-soupoc1,Southern Pochard,L2761556,"Puro Congo, La Tola","Mar 19, 2021",1,1.195194,-79.06519,S84086443,D. Brinkhuizen and L. Córdova,
-chifla1,Chilean Flamingo,L471680,"Punta Cormorán, Isla Floreana","Jul 25, 2008",1,-1.226127,-90.42834,S11093600,A. Jaramillo,
-limpki,Limpkin,carchi,La Libertad,"Oct 19, 2019",1,0.664528,-77.95855,S60807881,E. Taimal,
-pabcra,Paint-billed Crake,L3246401,"vía al Jardín Botánico, Sucúa","May 18, 2021",1,-2.46469,-78.16323,S88460793,G. Utitiaj,
-y00475,American Coot,L3646290,El Estero Ponds,"May 14, 2016",1,-0.958738,-90.99153,S29692835,K. Jensen,
-y00475,American Coot,L3202697,Posada de Flamengos,"May 30, 2018",1,-0.945527,-90.97487,S46281058,T. Rosenmeier and K. Kluge,
-pagplo,Pacific Golden-Plover,L2034603,La Segua,"Nov 3, 2016",1,-0.70318,-80.2014,S32351967,R. Ahlman,
-lobcur,Long-billed Curlew,L1785055,Ayampe River,"Oct 3, 2021",1,-1.669527,-80.81804,S95567766,"D. Arias-Cruzatty, I. Contreras-Rodríguez, I. Esparza, R. Matamoros, S. Plúa Albán, J. Romero and D. Souza",
-margod,Marbled Godwit,L1881907,"Las Bachas, Isla Santa Cruz","Jan 24, 2010",1,-0.494164,-90.34071,S22564446,S. Young,
-redkno,Red Knot,L787523,Ecuasal Mar Bravo,"May 9, 2014",1,-2.246064,-80.94171,S19779261,A. Hinkle and C. Hinkle,
-redkno,Red Knot,L1227364,"Puerto Villamil, Isla Isabela","Apr 22, 2017",1,-0.80106,-91.12871,S36455858,R. Espinosa,
-redkno,Red Knot,L2761556,"Puro Congo, La Tola","Sep 9, 2018",22,1.195194,-79.06519,S48391978,R. Ahlman,
-bubsan,Buff-breasted Sandpiper,espumilla,"Playa Espumilla, Isla Santiago","May 31, 2019",1,-0.204083,-90.82964,S57002991,K. John,
-lobdow,Long-billed Dowitcher,L1611102,"Puerto Villamil, Isla Isabela","Jan 6, 2013",1,-0.80106,-91.12871,,O. Nabrovenkov,
-lobdow,Long-billed Dowitcher,L722765,Laguna de Colta,"Feb 28, 2018",4,-1.730035,-78.75512,S43303241,"E. Ocaña, W. Arteaga Chávez, R. Hipo and F. Ritcher",
-rubsee2,Rufous-bellied Seedsnipe,imbabura,Volcán Imbabura,"Nov 11, 2020",3,0.28028,-78.1275,S94398916,N. Tutillo Chimarro,
-parjae,Parasitic Jaeger,sea,"‘at sea’ north of Tagus Cove, Isla Isabela","Mar 20, 2014",7,-0.262,-91.37126,,J. R. Trimble,
-bongul,Bonaparte’s Gull,L600355,Puerto López,"Nov 21, 2016",1,-1.560328,-80.80456,S32788663,S. Plúa Albán,
-litgul,Little Gull,L2275272,Puerto Baquerizo Moreno,"Mar 16, 2021",1,-0.901811,-89.612789,S83944951,L. Die,
-belgul,Belcher’s Gull,second_dock,Puerto Baquerizo Moreno,"May 2, 2021",1,-0.901811,-89.612789,S93693404,K. Berg,
-santer1,Sandwich Tern,L7747337,"Bahía Urbina, Isla Isabela","Dec 15, 2018",1,-0.392748,-91.22588,S65213579,T.Dimarzio,
-humpen1,Humboldt Penguin,L21672568,Islote El Pelado,"Aug 1, 2020",1,-1.93543,-80.78912,S72029780, J. C. Figueroa,
-wfspet,White-faced Storm-Petrel,L1331789,north of Canal Bolívar,"Jul 29, 2008",1,-0.29523,-91.383848,S39480891,S. Olmstead,
-norgip1,Northern Giant-Petrel,bahia,"Bahía Gardner, Isla Española","Aug 1, 2009",1,-1.351636,-89.66178,,R. Plaza,
-jufpet,Juan Fernandez Petrel,islo,Islote Sombrero Chino,"Oct 9, 2016",1,-0.36944,-90.58361,,R. Vogels and M. Bingley,
-pifshe,Pink-footed Shearwater,canal_bolivar,"Canal Bolívar, Isla Isabela","Jul 25, 2017",1,-0.29523,-91.383848,S38420310,A. Jaramillo,
-brnboo,Brown Booby,L1122776,Isla Española,"Nov 17, 2015",1,-1.410872,-89.637268,S89602985,L. C. Beltrán ,
-bcnher,Black-crowned Night-Heron,quebra,"Quebrada San Pedro, Tumbaco,","Oct 16, 2019",1,0.182482,-78.404145,,C. Vignat and F. Müller,
-grbher3,Great Blue Heron,L1817988,Napo River near Yarina,"Feb 13, 2016",1,-0.46566,-76.84412,S40043943,J. Huth,
-grbher3,Great Blue Heron,coca,Francisco de Orellana (Coca),"Oct 21, 2017",1,-0.44266,-76.83922,S27979383,K. Keef,
-grnher,Green Heron,L8301442,"Parque Las Vegas, Portoviejo","Jan 10, 2021",1,-1.06061,-80.44916,S79085128,L. Brunetti,
-grnher,Green Heron,tortuga,"Caleta Tortuga Negra, Isla Santa Cruz","Nov 14, 2012",1,0.640249,-90.372585,,R. Ahlman,
-redegr,Reddish Egret,L2120653,Ecuasal Pacoa,"Jan 5, 2020",1,-2.09651,-80.73544,S63109856,J. C. Figueroa,
-bafibi1,Bare-faced Ibis,arajuno,Río Arajuno,"May 26, 2018,",29,-1.073625,-77.561503,,H. Brieschke,
-bafibi1,Bare-faced Ibis,L1485651,Churute,"Oct 19, 2019",1,-2.50525,-79.600805,S60808464,G. Maenz and J. D. Morales,
-scaibi,Scarlet Ibis,L10685965,Vía Shushufindi-Limoncocha,"Dec 7, 2019",4,-0.2578,-76.65095,S62187896,J. Vera Fernández,
-swahaw,Swainson’s Hawk,sangolqui,Parque Lineal de Sangolquí,"Nov 17, 2015",1,-0.333,-78.44225,S25909535, M. F. Salazar and D. Arias-Cruzatty,
-swahaw,Swainson’s Hawk,L5838027,"La Lagartera, Churute","Jul 25, 2016",1,-2.48677,-79.61163,, G. Maenz,
-swahaw,Swainson’s Hawk,L5838027,"La Lagartera, Churute","Feb 11, 2020",3,-2.48677,-79.61163,S64925015, J. C. Figueroa and O. Carrión,
-orbfru1,Orange-breasted Fruiteater,L2254860,Corona de Oro,"May 19, 2019",1,-2.636076,-79.44937,S56517651,"P. Molina, A. Carrasco, B. Tinoco, and D. Pacheco-Osorio",
-grykin,Gray Kingbird,L6467765,Reserva Maquipucuna,"Oct 1, 2021",1,0.118726,-78.63516,S114227384,"M. Flores, J. Shyvers and J. Farley",
-whrswa1,White-rumped Swallow,carme,El Carmelo,"Mar 9, 2019",1,0.655788,-77.57079,S73458269,"E. Ocaña, Y. Luna and A. Boas",
-cliswa,Cliff Swallow,L471931, Isla Santa Fe,"Mar 24, 2015",1,-0.81691,-90.04068,S51542971, G. Carpentier and K. Adams,
-swathr,Swainson’s Thrush,mina_roja, Mina Roja,"Oct 29, 2020",1,-0.63657,-90.35872,S75787498, D. Anchundia,
-batoro1,Band-tailed Cacique,L16834822, Kapatinentza,"Oct 30, 2021",1,-2.68008,-77.486306,S97373221,"  D. Brinkhuizen, J. Nilsson and D.Utitiaj",
-grtgra,Great-tailed Grackle,L471637, Puerto Ayora,"Apr 8, 2010",1,-0.74233,-90.31457,S33221868, L. Die,
-norwat,Northern Waterthrush,chato, El Chato,"May 16, 2006",1,0.64025,-90.3726,S64962269, M. Hyett,
-prowar,Prothonotary Warbler,L5415587, Parque Lineal Kennedy Norte,"Dec 30, 2019",1,-2.163077,-79.9015,S64431887, C. Ponce,
-mouwar,Mourning Warbler,L6118390,Parroquia Veracruz,"Mar 1, 2020",2,-1.50588,-77.9413,S66714823, A. Argüello,
-varsee3,Variable Seedeater,L6035325," La Florida Ruins, Palanda","Jan 28, 2020",1,-4.635738,-79.13077,S63923624, M. Sánchez-Nivicela,
-reccar4,Red-capped Cardinal,L13565352, Valladolid,"Aug 15, 2020",1,-4.55046,-79.13202,S81267064, P. Angulo,
+speciesCode,comName,locId,locName,obsDt,howMany,lat,lng,subId,userDisplayName,altitude,cero_report
+bbwduc,Black-bellied Whistling-Duck,L6073730,Laguna El Salado,"Jul 13, 2019",1,0.582416,-77.789646,,W. Chulde,2980,6
+musduc,Muscovy Duck,L6073730,Laguna El Salado,"Aug 5, 2020",1,0.582416,-77.789646,S72514766,J. M. Loaiza and P. Molina,2980,6
+comduc3,Comb Duck,L2120653,Ecuasal Pacoa,"Sep 14, 2021",109,-2.09651,-80.73544,,A. Ágreda,0,6
+comduc3,Comb Duck,isla_santa_cruz,Isla Santa Cruz highlands,"Oct 30, 2019",1,-0.666,-90.325,S61240822,D. Valencia,515,6
+norsho,Northern Shoveler,L3064040,Playa El Garrapatero,"Feb 28, 2021",1,-0.69465,-90.22079,S82610495,D. Degel Andrade,0,6
+cintea,Cinnamon Teal,L2120653,Ecuasal Pacoa,"Sep 6, 2021",7,-2.09651,-80.73544,S94652546,A. Ágreda,0,6
+yebpin1,Yellow-billed Pintail,L2034603,La Segua,"Dec 30, 2016",1,-0.70318,-80.2014,S33288703,R. Ahlman,5,6
+soupoc1,Southern Pochard,L2761556,"Puro Congo, La Tola","Mar 19, 2021",1,1.195194,-79.06519,S84086443,D. Brinkhuizen and L. Córdova,0,6
+chifla1,Chilean Flamingo,L471680,"Punta Cormorán, Isla Floreana","Jul 25, 2008",1,-1.226127,-90.42834,S11093600,A. Jaramillo,0,6
+limpki,Limpkin,carchi,La Libertad,"Oct 19, 2019",1,0.664528,-77.95855,S60807881,E. Taimal,3040,6
+pabcra,Paint-billed Crake,L3246401,"vía al Jardín Botánico, Sucúa","May 18, 2021",1,-2.46469,-78.16323,S88460793,G. Utitiaj,820,6
+y00475,American Coot,L3646290,El Estero Ponds,"May 14, 2016",1,-0.958738,-90.99153,S29692835,K. Jensen,10,6
+y00475,American Coot,L3202697,Posada de Flamengos,"May 30, 2018",1,-0.945527,-90.97487,S46281058,T. Rosenmeier and K. Kluge,10,6
+pagplo,Pacific Golden-Plover,L2034603,La Segua,"Nov 3, 2016",1,-0.70318,-80.2014,S32351967,R. Ahlman,5,6
+lobcur,Long-billed Curlew,L1785055,Ayampe River,"Oct 3, 2021",1,-1.669527,-80.81804,S95567766,"D. Arias-Cruzatty, I. Contreras-Rodríguez, I. Esparza, R. Matamoros, S. Plúa Albán, J. Romero and D. Souza",0,6
+margod,Marbled Godwit,L1881907,"Las Bachas, Isla Santa Cruz","Jan 24, 2010",1,-0.494164,-90.34071,S22564446,S. Young,0,6
+redkno,Red Knot,L787523,Ecuasal Mar Bravo,"May 9, 2014",1,-2.246064,-80.94171,S19779261,A. Hinkle and C. Hinkle,0,6
+redkno,Red Knot,L1227364,"Puerto Villamil, Isla Isabela","Apr 22, 2017",1,-0.80106,-91.12871,S36455858,R. Espinosa,0,6
+redkno,Red Knot,L2761556,"Puro Congo, La Tola","Sep 9, 2018",22,1.195194,-79.06519,S48391978,R. Ahlman,0,6
+bubsan,Buff-breasted Sandpiper,espumilla,"Playa Espumilla, Isla Santiago","May 31, 2019",1,-0.204083,-90.82964,S57002991,K. John,0,6
+lobdow,Long-billed Dowitcher,L1611102,"Puerto Villamil, Isla Isabela","Jan 6, 2013",1,-0.80106,-91.12871,,O. Nabrovenkov,0,6
+lobdow,Long-billed Dowitcher,L722765,Laguna de Colta,"Feb 28, 2018",4,-1.730035,-78.75512,S43303241,"E. Ocaña, W. Arteaga Chávez, R. Hipo and F. Ritcher",3310,6
+rubsee2,Rufous-bellied Seedsnipe,imbabura,Volcán Imbabura,"Nov 11, 2020",3,0.28028,-78.1275,S94398916,N. Tutillo Chimarro,4200,6
+parjae,Parasitic Jaeger,sea,"‘at sea’ north of Tagus Cove, Isla Isabela","Mar 20, 2014",7,-0.262,-91.37126,,J. R. Trimble,0,6
+bongul,Bonaparte’s Gull,L600355,Puerto López,"Nov 21, 2016",1,-1.560328,-80.80456,S32788663,S. Plúa Albán,0,6
+litgul,Little Gull,L2275272,Puerto Baquerizo Moreno,"Mar 16, 2021",1,-0.901811,-89.612789,S83944951,L. Die,0,6
+belgul,Belcher’s Gull,second_dock,Puerto Baquerizo Moreno,"May 2, 2021",1,-0.901811,-89.612789,S93693404,K. Berg,0,6
+santer1,Sandwich Tern,L7747337,"Bahía Urbina, Isla Isabela","Dec 15, 2018",1,-0.392748,-91.22588,S65213579,T.Dimarzio,0,6
+humpen1,Humboldt Penguin,L21672568,Islote El Pelado,"Aug 1, 2020",1,-1.93543,-80.78912,S72029780, J. C. Figueroa,0,6
+wfspet,White-faced Storm-Petrel,L1331789,north of Canal Bolívar,"Jul 29, 2008",1,-0.29523,-91.383848,S39480891,S. Olmstead,0,6
+norgip1,Northern Giant-Petrel,bahia,"Bahía Gardner, Isla Española","Aug 1, 2009",1,-1.351636,-89.66178,,R. Plaza,0,6
+jufpet,Juan Fernandez Petrel,islo,Islote Sombrero Chino,"Oct 9, 2016",1,-0.36944,-90.58361,,R. Vogels and M. Bingley,0,6
+pifshe,Pink-footed Shearwater,canal_bolivar,"Canal Bolívar, Isla Isabela","Jul 25, 2017",1,-0.29523,-91.383848,S38420310,A. Jaramillo,0,6
+brnboo,Brown Booby,L1122776,Isla Española,"Nov 17, 2015",1,-1.410872,-89.637268,S89602985,L. C. Beltrán ,0,6
+bcnher,Black-crowned Night-Heron,quebra,"Quebrada San Pedro, Tumbaco,","Oct 16, 2019",1,0.182482,-78.404145,,C. Vignat and F. Müller,2400,6
+grbher3,Great Blue Heron,L1817988,Napo River near Yarina,"Feb 13, 2016",1,-0.46566,-76.84412,S40043943,J. Huth,250,6
+grbher3,Great Blue Heron,coca,Francisco de Orellana (Coca),"Oct 21, 2017",1,-0.44266,-76.83922,S27979383,K. Keef,250,6
+grnher,Green Heron,L8301442,"Parque Las Vegas, Portoviejo","Jan 10, 2021",1,-1.06061,-80.44916,S79085128,L. Brunetti,40,6
+grnher,Green Heron,tortuga,"Caleta Tortuga Negra, Isla Santa Cruz","Nov 14, 2012",1,0.640249,-90.372585,,R. Ahlman,0,6
+redegr,Reddish Egret,L2120653,Ecuasal Pacoa,"Jan 5, 2020",1,-2.09651,-80.73544,S63109856,J. C. Figueroa,0,6
+bafibi1,Bare-faced Ibis,arajuno,Río Arajuno,"May 26, 2018,",29,-1.073625,-77.561503,,H. Brieschke,360,6
+bafibi1,Bare-faced Ibis,L1485651,Churute,"Oct 19, 2019",1,-2.50525,-79.600805,S60808464,G. Maenz and J. D. Morales,10,6
+scaibi,Scarlet Ibis,L10685965,Vía Shushufindi-Limoncocha,"Dec 7, 2019",4,-0.2578,-76.65095,S62187896,J. Vera Fernández,260,6
+swahaw,Swainson’s Hawk,sangolqui,Parque Lineal de Sangolquí,"Nov 17, 2015",1,-0.333,-78.44225,S25909535, M. F. Salazar and D. Arias-Cruzatty,2500,6
+swahaw,Swainson’s Hawk,L5838027,"La Lagartera, Churute","Jul 25, 2016",1,-2.48677,-79.61163,, G. Maenz,10,6
+swahaw,Swainson’s Hawk,L5838027,"La Lagartera, Churute","Feb 11, 2020",3,-2.48677,-79.61163,S64925015, J. C. Figueroa and O. Carrión,10,6
+orbfru1,Orange-breasted Fruiteater,L2254860,Corona de Oro,"May 19, 2019",1,-2.636076,-79.44937,S56517651,"P. Molina, A. Carrasco, B. Tinoco, and D. Pacheco-Osorio",750,6
+grykin,Gray Kingbird,L6467765,Reserva Maquipucuna,"Oct 1, 2021",1,0.118726,-78.63516,S114227384,"M. Flores, J. Shyvers and J. Farley",1360,6
+whrswa1,White-rumped Swallow,carme,El Carmelo,"Mar 9, 2019",1,0.655788,-77.57079,S73458269,"E. Ocaña, Y. Luna and A. Boas",2750,6
+cliswa,Cliff Swallow,L471931, Isla Santa Fe,"Mar 24, 2015",1,-0.81691,-90.04068,S51542971, G. Carpentier and K. Adams,0,6
+swathr,Swainson’s Thrush,mina_roja, Mina Roja,"Oct 29, 2020",1,-0.63657,-90.35872,S75787498, D. Anchundia,630,6
+batoro1,Band-tailed Cacique,L16834822, Kapatinentza,"Oct 30, 2021",1,-2.68008,-77.486306,S97373221,"  D. Brinkhuizen, J. Nilsson and D.Utitiaj",225,6
+grtgra,Great-tailed Grackle,L471637, Puerto Ayora,"Apr 8, 2010",1,-0.74233,-90.31457,S33221868, L. Die,0,6
+norwat,Northern Waterthrush,chato, El Chato,"May 16, 2006",1,0.64025,-90.3726,S64962269, M. Hyett,610,6
+prowar,Prothonotary Warbler,L5415587, Parque Lineal Kennedy Norte,"Dec 30, 2019",1,-2.163077,-79.9015,S64431887, C. Ponce,5,6
+mouwar,Mourning Warbler,L6118390,Parroquia Veracruz,"Mar 1, 2020",2,-1.50588,-77.9413,S66714823, A. Argüello,960,6
+varsee3,Variable Seedeater,L6035325," La Florida Ruins, Palanda","Jan 28, 2020",1,-4.635738,-79.13077,S63923624, M. Sánchez-Nivicela,1055,6
+reccar4,Red-capped Cardinal,L13565352, Valladolid,"Aug 15, 2020",1,-4.55046,-79.13202,S81267064, P. Angulo,1670,6

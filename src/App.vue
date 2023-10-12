@@ -55,9 +55,9 @@
                   target="_blank"
                   title="eBird hotspot"
                   v-if="popup.locId.startsWith('L')"
-                  >{{ popup.locName }}</a
+                  >{{ popup.locName }} ({{ popup.altitude }} m.)</a
                 >
-                <span v-else>{{ popup.locName }}</span>
+                <span v-else>{{ popup.locName }} ({{ popup.altitude }} m.)</span>
               </span>
               <span>
                 <a
@@ -275,7 +275,8 @@ export default {
         o.locationPrivate = e.locationPrivate;
         o.obsDt = e.obsDt;
         o.latLng = latLng(e.lat, e.lng);
-
+        o.altitude = e.altitude;
+        o.cero_report = e.cero_report;
         // Following only present with detail=full in url but we found a way around for all of them
         o.obsId = e.obsId;
         o.userDisplayName = "userDisplayName" in e ? "(" + e.userDisplayName + ")" : "";
@@ -372,6 +373,7 @@ export default {
           obs: [],
           count: 0,
           locName: i.locName,
+          altitude: i.altitude,
           locationPrivate: i.locationPrivate,
           regionCode: i.regionCode,
           latLng: i.latLng,
