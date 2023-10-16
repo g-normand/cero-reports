@@ -18,6 +18,7 @@ const sp_region = sp.map(s => {
         altitude: s.altitude,
         subId: s.subId,
         userDisplayName: s.userDisplayName,
+        comment: s.comment
     }
 })
 

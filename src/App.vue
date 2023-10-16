@@ -82,7 +82,7 @@
                   </span>
                   <b-badge pill style="background-color: #343a40">{{ spe.obs.length }}</b-badge>
                 </b-card-header>
-                <b-list-group flush class="mh-240">
+                <b-list-group flush class="mh-160">
                   <b-list-group-item v-for="obs in spe.obs" :key="obs.subId" class="py-1 px-0 hover-darken">
                     <b-col class="d-flex w-100 justify-content-between">
                       <small>
@@ -94,16 +94,9 @@
                         </a>
                         <span v-if="!obs.subId">{{ obs.obsDt }}, {{ obs.howMany }} ind. {{ obs.userDisplayName }}</span>
                       </small>
-                      <span v-if="obs.hasRichMedia | obs.hasComments">
-                        <span v-if="obs.hasRichMedia">
-                          <small>
-                            <b-icon-camera-fill class="mr-1" @click="addMedia(obs.obsId)" />
-                          </small>
-                        </span>
-                        <span v-if="obs.hasComments">
-                          <small><b-icon-chat-square-text-fill></b-icon-chat-square-text-fill></small>
-                        </span>
-                      </span>
+                    </b-col>
+                    <b-col v-if="obs.comment"  class="d-flex w-100 justify-content-between">
+                      <small>{{ obs.comment }}</small>
                     </b-col>
                   </b-list-group-item>
                 </b-list-group>
@@ -282,12 +275,11 @@ export default {
         o.obsDt = e.obsDt;
         o.latLng = latLng(e.lat, e.lng);
         o.altitude = e.altitude;
+        o.comment = e.comment;
         o.cero_report = e.cero_report;
         // Following only present with detail=full in url but we found a way around for all of them
         o.obsId = e.obsId;
         o.userDisplayName = "userDisplayName" in e ? "(" + e.userDisplayName + ")" : "";
-        o.hasComments = e.hasComments;
-        o.hasRichMedia = e.hasRichMedia;
         return o;
       });
       return obs;
@@ -380,6 +372,7 @@ export default {
           count: 0,
           locName: i.locName,
           altitude: i.altitude,
+          comment: i.comment,
           locationPrivate: i.locationPrivate,
           regionCode: i.regionCode,
           latLng: i.latLng,
