@@ -86,13 +86,13 @@
                   <b-list-group-item v-for="obs in spe.obs" :key="obs.subId" class="py-1 px-0 hover-darken">
                     <b-col class="d-flex w-100 justify-content-between">
                       <small>
-                        <a v-if="obs.subId"
+                        <a v-if="obs.subId && obs.subId != 'NO_EBIRD'"
                           v-bind:href="'https://ebird.org/checklist/' + obs.subId + '#' + spe.speciesCode"
                           target="_blank"
                         >
                           {{ obs.obsDt }}, {{ obs.howMany }} ind. {{ obs.userDisplayName }}
                         </a>
-                        <span v-if="!obs.subId">{{ obs.obsDt }}, {{ obs.howMany }} ind. {{ obs.userDisplayName }}</span>
+                        <span v-if="!obs.subId || obs.subId == 'NO_EBIRD'">{{ obs.obsDt }}, {{ obs.howMany }} ind. {{ obs.userDisplayName }}</span>
                       </small>
                     </b-col>
                     <b-col v-if="obs.comment"  class="d-flex w-100 justify-content-between">
