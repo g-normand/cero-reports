@@ -8,6 +8,7 @@ const sp_region = sp.map(s => {
     return {
         speciesCode: s.speciesCode,
         comName: s.comName,
+        province: s.province,
         locId: s.locId,
         locName: s.locName,
         howMany: s.howMany,

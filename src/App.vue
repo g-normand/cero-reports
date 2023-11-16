@@ -261,6 +261,7 @@ export default {
       // This filtering is due when using detail=full in api. Maybe because of adding comments/media later? Need to check, but it would be then worth filtering more
       var id = obs.map((item) => item.speciesCode + item.obsDt + item.subId);
       obs = obs.filter((val, index) => id.indexOf(val.speciesCode + val.obsDt + val.subId) === index);
+      
       obs = obs.map((e) => {
         let o = {};
         o.regionCode = 'EC';
