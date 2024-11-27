@@ -110,7 +110,7 @@
       <b-sidebar id="sidebar-1" title="Official rare sightings of Ecuador" visible shadow>
         <b-overlay :show="showOverlay" rounded="sm">
           <div class="px-3 py-2">
-            This map shows the official rare sightings in Ecuador according to the last CERO report published in 2021.<br />
+            This map shows the official rare sightings in Ecuador according to the last CERO report published in 2023.<br />
             You can find the report here :
             <b-form>
              <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/2856">6th report</a>
