@@ -11,9 +11,9 @@ import Multiselect from "vue-multiselect";
 Vue.component("multiselect", Multiselect);
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faDirections, faClone } from "@fortawesome/free-solid-svg-icons";
+import { faDirections, faClone, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-library.add(faDirections, faClone);
+library.add(faDirections, faClone, faExternalLinkAlt);
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 import VueCookie from "vue-cookie";

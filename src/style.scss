@@ -99,3 +99,22 @@ body {
 .leaflet-default-icon-path {
   background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
 }
+
+.cero-reports-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6c757d;
+  margin-bottom: 0.4rem;
+}
+
+.list-group-item.cero-report-latest {
+  border-color: #4ca800;
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+  background-color: rgba(76, 168, 0, 0.08);
+  color: #4ca800;
+}

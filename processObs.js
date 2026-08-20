@@ -5,6 +5,10 @@ const sp = await csvtojson.csv().fromFile("src/assets/obs_list.csv")
 
 
 const sp_region = sp.map(s => {
+    if(s.cero_report == ''){
+        console.log(s.comName);
+        return Exception('error');
+    }
     return {
         speciesCode: s.speciesCode,
         comName: s.comName,

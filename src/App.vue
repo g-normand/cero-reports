@@ -110,29 +110,51 @@
       <b-sidebar id="sidebar-1" title="Official rare sightings of Ecuador" visible shadow>
         <b-overlay :show="showOverlay" rounded="sm">
           <div class="px-3 py-2">
-            This map shows the official rare sightings in Ecuador according to the last CERO report published in 2023.<br />
-            You can find the report here :
-            <b-form>
-             <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/2856">6th report</a>
-            </b-form>
-            <br />
+            <div class="mb-3">
+              <label class="mb-1 d-block">Filter by report</label>
+              <multiselect
+                v-model="selectedReports"
+                :options="reportOptions"
+                label="number"
+                track-by="number"
+                :multiple="true"
+                :close-on-select="false"
+                placeholder="All reports"
+              ></multiselect>
+            </div>
+            <div class="mb-3">
+              <label class="mb-1 d-block">Filter by species</label>
+              <multiselect
+                v-model="selectedSpecies"
+                :options="speciesOptions"
+                label="comName"
+                track-by="speciesCode"
+                :multiple="true"
+                :close-on-select="false"
+                placeholder="All species"
+              ></multiselect>
+            </div>
+            This map shows the official rare sightings in Ecuador according to the CERO reports.<br />
 
-            List of the other CERO reports :
-            <b-form>
-             <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/1990">5th report</a>
-            </b-form>
-            <b-form>
-             <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/1277">4th report</a>
-            </b-form>
-            <b-form>
-             <a href="https://revistas.usfq.edu.ec/index.php/reo/article/view/446">3rd report</a>
-            </b-form>
-            <b-form>
-             <a href="https://ceroecuador.files.wordpress.com/2016/02/2014_nilsson_et-al_segundo-reporte-cero1.pdf">2nd report</a>
-            </b-form>
-            <b-form>
-             <a href="https://ceroecuador.files.wordpress.com/2016/02/2013_freile-et-al_cero_reporte-anual-2013.pdf">1st report</a>
-            </b-form>
+            <div class="mt-3">
+              <div class="cero-reports-title">CERO reports</div>
+              <b-list-group>
+                <b-list-group-item
+                  v-for="report in ceroReports"
+                  :key="report.number"
+                  :href="report.url"
+                  target="_blank"
+                  class="d-flex justify-content-between align-items-center py-2"
+                  :class="{ 'cero-report-latest': report.latest }"
+                >
+                  <span>
+                    {{ report.label }}
+                    <b-badge v-if="report.latest" variant="success" pill class="ml-2">latest</b-badge>
+                  </span>
+                  <font-awesome-icon icon="external-link-alt" class="text-muted" />
+                </b-list-group-item>
+              </b-list-group>
+            </div>
           </div>
         </b-overlay>
         <template #footer>
@@ -243,6 +265,46 @@ export default {
       showOverlay: false,
       popup: false,
       copy_status: "...",
+      selectedReports: [],
+      selectedSpecies: [],
+      ceroReports: [
+        {
+          number: 6,
+          label: "6th report (2023)",
+          url: "https://revistas.usfq.edu.ec/index.php/reo/article/view/2856",
+          latest: true,
+        },
+        {
+          number: 5,
+          label: "5th report (2020)",
+          url: "https://revistas.usfq.edu.ec/index.php/reo/article/view/1990",
+          latest: false,
+        },
+        {
+          number: 4,
+          label: "4th report (2019)",
+          url: "https://revistas.usfq.edu.ec/index.php/reo/article/view/1277",
+          latest: false,
+        },
+        {
+          number: 3,
+          label: "3rd report (2017)",
+          url: "https://revistas.usfq.edu.ec/index.php/reo/article/view/446",
+          latest: false,
+        },
+        {
+          number: 2,
+          label: "2nd report (2014)",
+          url: "https://ceroecuador.files.wordpress.com/2016/02/2014_nilsson_et-al_segundo-reporte-cero1.pdf",
+          latest: false,
+        },
+        {
+          number: 1,
+          label: "1st report (2013)",
+          url: "https://ceroecuador.files.wordpress.com/2016/02/2013_freile-et-al_cero_reporte-anual-2013.pdf",
+          latest: false,
+        },
+      ],
     };
   },
   mounted() {
@@ -366,8 +428,42 @@ export default {
     },
   },
   computed: {
+    reportOptions: function () {
+      var present = new Set(this.observationsRegion.map((o) => o.cero_report).filter((r) => !!r));
+      return this.ceroReports
+        .filter((r) => present.has(String(r.number)))
+        .sort((a, b) => b.number - a.number);
+    },
+    speciesOptions: function () {
+      var seen = {};
+      var options = [];
+      this.observationsRegion.forEach((o) => {
+        if (!seen[o.speciesCode]) {
+          seen[o.speciesCode] = true;
+          options.push({ speciesCode: o.speciesCode, comName: o.comName });
+        }
+      });
+      return options.sort((a, b) => a.comName.localeCompare(b.comName));
+    },
+    filteredObservations: function () {
+      return this.observationsRegion.filter((o) => {
+        if (
+          this.selectedReports.length > 0 &&
+          !this.selectedReports.some((r) => String(r.number) === o.cero_report)
+        ) {
+          return false;
+        }
+        if (
+          this.selectedSpecies.length > 0 &&
+          !this.selectedSpecies.some((s) => s.speciesCode === o.speciesCode)
+        ) {
+          return false;
+        }
+        return true;
+      });
+    },
     locationFiltered: function () {
-      return this.observationsRegion.reduce(function (r, i) {
+      return this.filteredObservations.reduce(function (r, i) {
         r[i.locId] = r[i.locId] || {
           obs: [],
           count: 0,
