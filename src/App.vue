@@ -75,7 +75,7 @@
               <b-card no-body v-for="spe in popup.sp" :key="spe.speciesCode" class="mx-0 mb-1">
                 <b-card-header class="p-1 d-flex justify-content-between align-items-center">
                   <span>
-                    {{ spe.comName }}
+                    {{ spe.commonName }} (<i>{{spe.scientificName}}</i>)
                     <b-badge v-if="(spe.aba >= 3) & (spe.aba <= 6)" :class="'ml-2 font-weight-normal bg-aba-' + spe.aba"
                       >ABA-{{ spe.aba }}</b-badge
                     >
@@ -115,7 +115,7 @@
               <multiselect
                 v-model="selectedReports"
                 :options="reportOptions"
-                label="number"
+                label="label"
                 track-by="number"
                 :multiple="true"
                 :close-on-select="false"
@@ -123,11 +123,23 @@
               ></multiselect>
             </div>
             <div class="mb-3">
-              <label class="mb-1 d-block">Filter by species</label>
+              <label class="mb-1 d-block">Filter by species (English name)</label>
               <multiselect
                 v-model="selectedSpecies"
-                :options="speciesOptions"
+                :options="speciesOptionsByCommonName"
                 label="comName"
+                track-by="speciesCode"
+                :multiple="true"
+                :close-on-select="false"
+                placeholder="All species"
+              ></multiselect>
+            </div>
+            <div class="mb-3">
+              <label class="mb-1 d-block">Filter by species (scientific name)</label>
+              <multiselect
+                v-model="selectedSpecies"
+                :options="speciesOptionsByScientificName"
+                label="scientificName"
                 track-by="speciesCode"
                 :multiple="true"
                 :close-on-select="false"
@@ -269,39 +281,52 @@ export default {
       selectedSpecies: [],
       ceroReports: [
         {
+          number: 7,
+          label: "7th report (2025)",
+          url: "https://revistas.usfq.edu.ec/index.php/reo/article/view/4021",
+          description: "46 records (34 accepted, 12 rejected/postponed)",
+          latest: true,
+        },
+        {
           number: 6,
           label: "6th report (2023)",
           url: "https://revistas.usfq.edu.ec/index.php/reo/article/view/2856",
-          latest: true,
+          description: "79 records (62 accepted, 17 rejected/postponed)",
+          latest: false,
         },
         {
           number: 5,
           label: "5th report (2020)",
           url: "https://revistas.usfq.edu.ec/index.php/reo/article/view/1990",
+          description: "74 records (x accepted, x rejected/postponed)",
           latest: false,
         },
         {
           number: 4,
           label: "4th report (2019)",
           url: "https://revistas.usfq.edu.ec/index.php/reo/article/view/1277",
+          description: "36 records (x accepted, x rejected/postponed)",
           latest: false,
         },
         {
           number: 3,
           label: "3rd report (2017)",
           url: "https://revistas.usfq.edu.ec/index.php/reo/article/view/446",
+          description: "51 records (42 accepted, 9 rejected/postponed)",
           latest: false,
         },
         {
           number: 2,
           label: "2nd report (2014)",
           url: "https://ceroecuador.files.wordpress.com/2016/02/2014_nilsson_et-al_segundo-reporte-cero1.pdf",
+          description: "51 records (46 accepted, 5 rejected/postponed)",
           latest: false,
         },
         {
           number: 1,
           label: "1st report (2013)",
           url: "https://ceroecuador.files.wordpress.com/2016/02/2013_freile-et-al_cero_reporte-anual-2013.pdf",
+          description: "97 records (87 accepted, 10 rejected/postponed)",
           latest: false,
         },
       ],
@@ -328,7 +353,7 @@ export default {
         let o = {};
         o.regionCode = 'EC';
         o.comName = e.comName;
-        o.sciName = e.sciName;
+        o.scientificName = e.scientificName;
         o.speciesCode = e.speciesCode;
         o.howMany = e.howMany ? e.howMany : "x";
         o.locId = e.locId;
@@ -384,7 +409,8 @@ export default {
       loc.sp = loc.obs.reduce(function (r, i) {
         r[i.speciesCode] = r[i.speciesCode] || {
          obs: [],
-          comName: i.comName,
+          commonName: i.comName,
+          scientificName: i.scientificName,
           speciesCode: i.speciesCode,
           aba: i.aba,
         };
@@ -440,10 +466,16 @@ export default {
       this.observationsRegion.forEach((o) => {
         if (!seen[o.speciesCode]) {
           seen[o.speciesCode] = true;
-          options.push({ speciesCode: o.speciesCode, comName: o.comName });
+          options.push({ speciesCode: o.speciesCode, comName: o.comName, scientificName: o.scientificName });
         }
       });
-      return options.sort((a, b) => a.comName.localeCompare(b.comName));
+      return options;
+    },
+    speciesOptionsByCommonName: function () {
+      return [...this.speciesOptions].sort((a, b) => a.comName.localeCompare(b.comName));
+    },
+    speciesOptionsByScientificName: function () {
+      return [...this.speciesOptions].sort((a, b) => a.scientificName.localeCompare(b.scientificName));
     },
     filteredObservations: function () {
       return this.observationsRegion.filter((o) => {
